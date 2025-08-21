@@ -2,7 +2,8 @@ package com.example.jwt;
 
 import java.security.Key;
 import java.util.Date;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,8 +23,11 @@ public class JwtService {
     private static final String SECRET_KEY = "ogXO8fxtSOF4H6JHsJdraLw9XJ53mSLRFYeTFR74N0Y=";
     
     public String generateToken(UserDetails userDetails){
+        Map<String,Object> claimmap = new HashMap<>();
+        claimmap.put("role", "ADMIN");
         return Jwts.builder()
         .setSubject(userDetails.getUsername())
+        .addClaims(claimmap)
         .setIssuedAt(new Date())
         .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60  * 60 * 2))
         .signWith(getKey(),SignatureAlgorithm.HS256)

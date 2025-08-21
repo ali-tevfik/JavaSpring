@@ -1,6 +1,5 @@
 package com.example.config;
 
-import java.lang.classfile.ClassFile.Option;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,13 +15,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.model.User;
-import com.example.repository.IUserRepository;
+import com.example.repository.UserRepository;
 
 @Configuration
 public class AppConfig {
 
     @Autowired
-    private IUserRepository userRepository;
+    private UserRepository userRepository;
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
@@ -40,7 +38,7 @@ public class AppConfig {
 
             @Override
             public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                Optional<User> optional = userRepository.findByUserName(username);
+                Optional<User> optional = userRepository.findByUsername(username);
                 if(optional.isPresent()){
                     return optional.get();
                 }
