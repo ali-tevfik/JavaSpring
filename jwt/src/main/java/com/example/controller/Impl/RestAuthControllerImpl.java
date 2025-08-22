@@ -7,7 +7,9 @@ import com.example.controller.IRestAuthController;
 import com.example.dto.DtoUser;
 import com.example.jwt.AuthRequest;
 import com.example.jwt.AuthResponse;
+import com.example.jwt.RefreshTokenRequest;
 import com.example.service.IAuthService;
+import com.example.service.IRefresTokenService;
 
 import jakarta.validation.Valid;
 
@@ -21,6 +23,11 @@ public class RestAuthControllerImpl implements IRestAuthController {
     @Autowired
     private IAuthService authService;
 
+
+    @Autowired
+    private IRefresTokenService refresTokenService;
+
+    
     @PostMapping("/register")
     @Override
     public DtoUser register(@Valid @RequestBody AuthRequest request){
@@ -32,5 +39,13 @@ public class RestAuthControllerImpl implements IRestAuthController {
     public AuthResponse authenticate(@Valid @RequestBody AuthRequest request) {
         System.out.println("Amcik");
         return authService.authenticate(request);
+    }
+
+
+    
+    @PostMapping("/refreshToken")
+    @Override
+    public AuthResponse refreshToken(@RequestBody RefreshTokenRequest refreshToken) {
+        return refresTokenService.refreshToken(refreshToken);
     }
 }
