@@ -1,4 +1,4 @@
-package com.ali.Galleries;
+package com.ali.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
