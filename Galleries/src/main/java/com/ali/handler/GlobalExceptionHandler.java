@@ -2,7 +2,6 @@ package com.ali.handler;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
-import java.net.Authenticator.RequestorType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;

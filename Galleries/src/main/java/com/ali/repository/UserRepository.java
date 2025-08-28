@@ -1,4 +1,4 @@
-package com.ali.repository;
+package com.example.repository;
 
 import java.util.Optional;
 
@@ -9,7 +9,5 @@ import com.ali.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-
     Optional<User> findByUsername(String username);
-
 }

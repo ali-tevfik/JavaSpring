@@ -11,12 +11,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
+import com.ali.handler.AuthEntryPoint;
 import com.ali.jwt.JwtAuthFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
 
     public static final String REGISTER="/register";
     public static final String AUTHENTICATE="/authenticate";
@@ -25,15 +26,19 @@ public class SecurityConfig {
     @Autowired
     private AuthenticationProvider authenticationProvider;
 
+    @Autowired
     private JwtAuthFilter jwtAuthFilter;
 
+   @Autowired
+    private AuthEntryPoint authEntryPoint;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf().disable()
         .authorizeHttpRequests(request->
-        request.requestMatchers(REFRESHTOKEN,REGISTER,REGISTER).permitAll()
+        request.requestMatchers(REFRESHTOKEN,AUTHENTICATE,REGISTER).permitAll()
         .anyRequest()
         .authenticated())
+        .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

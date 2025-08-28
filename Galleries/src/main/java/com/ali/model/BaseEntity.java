@@ -10,8 +10,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
+@Getter
+@Setter
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,5 +23,5 @@ public class BaseEntity {
 
     @Column(name = "create_time")
     @DateTimeFormat(iso = ISO.DATE_TIME)
-    private Date creadetTime;
+    private Date createTime;
 }
