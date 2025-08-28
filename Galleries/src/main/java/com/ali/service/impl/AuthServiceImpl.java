@@ -1,14 +1,11 @@
 package com.ali.service.impl;
 
-import java.security.AuthProvider;
-import java.sql.Ref;
 import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

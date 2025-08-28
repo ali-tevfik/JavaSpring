@@ -12,7 +12,6 @@ import com.ali.dto.AuthResponse;
 import com.ali.dto.DtoAuthRequest;
 import com.ali.dto.DtoUser;
 import com.ali.dto.RefreshTokenRequest;
-import com.ali.model.RefreshToken;
 import com.ali.service.IAuthService;
 
 import jakarta.validation.Valid;

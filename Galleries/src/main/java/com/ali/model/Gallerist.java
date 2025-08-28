@@ -23,5 +23,5 @@ public class Gallerist extends BaseEntity{
     private String lastName;
 
     @OneToOne
-    private Adress adress;
+    private Address address;
 }

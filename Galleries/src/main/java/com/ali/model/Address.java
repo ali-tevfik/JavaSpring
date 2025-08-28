@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "adress")
+@Table(name = "address")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Adress extends BaseEntity {
+public class Address extends BaseEntity {
     private String city;
     private String district;
     private String neighborhood;

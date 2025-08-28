@@ -4,7 +4,6 @@ import com.ali.dto.AuthResponse;
 import com.ali.dto.DtoAuthRequest;
 import com.ali.dto.DtoUser;
 import com.ali.dto.RefreshTokenRequest;
-import com.ali.model.RefreshToken;
 
 public interface IAuthService {
     public DtoUser register(DtoAuthRequest input);
